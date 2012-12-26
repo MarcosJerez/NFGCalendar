@@ -61,19 +61,9 @@
       </div><!-- /btn-group -->
     </div>
 
-
-    
-    <div style="width:100%">
-      <span style="margin-left: 15%;"><a href="<?php echo url_for('calendar/index');?>">Todos</a></span>
-      <span style="margin-left: 15%;"><a href="<?php echo url_for('calendar/tarifaMesa');?>">Tarifa Mesa AVE</a></span>
-      <span style="margin-left: 15%;"><a href="<?php echo url_for('calendar/compartirCoche');?>">Compartir Coche</a></span>
-    </div>
     
       <div id="cuerpo">
-        
           <?php echo $sf_content ?>
-
-       
       </div>
     </div>
 
