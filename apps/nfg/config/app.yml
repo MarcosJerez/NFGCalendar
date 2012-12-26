@@ -12,7 +12,7 @@ all:
 
   .array:
     assets:
-      javascripts: [ jquery/js/jquery-1.6.2.mi.js ]
+      javascripts: []
       stylesheets: [ native/css/default.css, native/css/admin.css ]
       
   mantenimiento:

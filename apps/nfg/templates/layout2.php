@@ -15,8 +15,49 @@
   <body >
     
     <div id="contenedor_general">
-    <h1>Valencian@s en Madrid / Compartir coche Madrid-Valencia</h1>
-     
+    <h1>Nosfaltagente.com</h1>
+
+    <div class="btn-toolbar" style="margin: 0;">
+      <div class="btn-group">
+        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Viajes <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="<?php echo url_for('calendar/index');?>">Todos</a></li>
+          <li class="divider"></li>
+          <li><a href="<?php echo url_for('calendar/compartirCoche');?>">Compartir coche</a></li>
+          <li><a href="<?php echo url_for('calendar/tarifaMesa');?>">Tarifa Mesa AVE</a></li>
+        </ul>
+      </div><!-- /btn-group -->
+      <div class="btn-group">
+        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Deportes <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="<?php echo url_for('calendar/index');?>">Todos</a></li>
+          <li class="divider"></li>
+          <li><a href="<?php echo url_for('calendar/compartirCoche');?>">Compartir coche</a></li>
+          <li><a href="<?php echo url_for('calendar/tarifaMesa');?>">Tarifa Mesa AVE</a></li>
+        </ul>
+      </div><!-- /btn-group -->
+      <div class="btn-group">
+        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Descuentos para grupos <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="<?php echo url_for('calendar/index');?>">Todos</a></li>
+          <li class="divider"></li>
+          <li><a href="<?php echo url_for('calendar/compartirCoche');?>">Compartir coche</a></li>
+          <li><a href="<?php echo url_for('calendar/tarifaMesa');?>">Tarifa Mesa AVE</a></li>
+        </ul>
+      </div><!-- /btn-group -->
+      <div class="btn-group">
+        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Otros <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="<?php echo url_for('calendar/index');?>">Todos</a></li>
+          <li class="divider"></li>
+          <li><a href="<?php echo url_for('calendar/compartirCoche');?>">Compartir coche</a></li>
+          <li><a href="<?php echo url_for('calendar/tarifaMesa');?>">Tarifa Mesa AVE</a></li>
+        </ul>
+      </div><!-- /btn-group -->
+    </div>
+
+
+    
     <div style="width:100%">
       <span style="margin-left: 15%;"><a href="<?php echo url_for('calendar/index');?>">Todos</a></span>
       <span style="margin-left: 15%;"><a href="<?php echo url_for('calendar/tarifaMesa');?>">Tarifa Mesa AVE</a></span>
