@@ -47,19 +47,6 @@
 
 
 
-
-
-
-
-
-<?php use_stylesheet('../js/fullcalendar-1.5.4/fullcalendar/fullcalendar.css'); ?> 
-<?php use_javascript('fullcalendar-1.5.4/jquery/jquery-1.8.1.min.js'); ?>
-<?php use_javascript('fullcalendar-1.5.4/jquery/jquery-ui-1.8.23.custom.min.js'); ?>
-<?php use_javascript('fullcalendar-1.5.4/fullcalendar/fullcalendar.min.js'); ?>
-<?php use_javascript('bootstrap.min.js'); ?>
-<?php include_stylesheets() ?>
-<?php include_javascripts() ?>
-
 <div id="calendar"></div>
 
 <div class="modal hide" id="nueva">
