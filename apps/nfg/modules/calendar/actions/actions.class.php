@@ -76,7 +76,7 @@ class calendarActions extends sfActions
     $this->urlEventos = 'calendar/convTodasJSON';
     $criteria = new Criteria();
     $this->widgetActividades = new sfWidgetFormPropelChoice(array('model'=>'NfgActividad','method'=>'getAbrev','criteria'=>$criteria));
-    $this->widgetLocalidades = new sfWidgetFormPropelChoice(array('model' => 'NfgLocalidad', 'order_by'=>array('nombre','asc'),'add_empty' => false));
+    $this->widgetLocalidades = new sfWidgetFormPropelChoice(array('model' => 'NfgLocalidad', 'order_by'=>array('Nombre','asc'),'add_empty' => false));
     
     if($this->isAuthenticated) $this->setTemplate('index');
     else $this->setTemplate('indexNoLogin');
@@ -96,7 +96,7 @@ class calendarActions extends sfActions
     $criteria = new Criteria();
     //$criteria->add(NfgActividadPeer::ID_CATEGORIA,$id_categoria);
     $this->widgetActividades = new sfWidgetFormPropelChoice(array('model'=>'NfgActividad','method'=>'getAbrev','criteria'=>$criteria));
-    $this->widgetLocalidades = new sfWidgetFormPropelChoice(array('model' => 'NfgLocalidad', 'order_by'=>array('nombre','asc'),'add_empty' => false));
+    $this->widgetLocalidades = new sfWidgetFormPropelChoice(array('model' => 'NfgLocalidad', 'order_by'=>array('Nombre','asc'),'add_empty' => false));
     
     if($this->isAuthenticated) $this->setTemplate('index');
     else $this->setTemplate('indexNoLogin');
@@ -112,7 +112,7 @@ class calendarActions extends sfActions
     $criteria = new Criteria();
     //$criteria->add(NfgActividadPeer::ID_CATEGORIA,$id_categoria);
     $this->widgetActividades = new sfWidgetFormPropelChoice(array('model'=>'NfgActividad','method'=>'getAbrev','criteria'=>$criteria));
-    $this->widgetLocalidades = new sfWidgetFormPropelChoice(array('model' => 'NfgLocalidad', 'order_by'=>array('nombre','asc'),'add_empty' => false));
+    $this->widgetLocalidades = new sfWidgetFormPropelChoice(array('model' => 'NfgLocalidad', 'order_by'=>array('Nombre','asc'),'add_empty' => false));
     
     if($this->isAuthenticated) $this->setTemplate('index');
     else $this->setTemplate('indexNoLogin');
