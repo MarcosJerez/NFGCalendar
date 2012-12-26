@@ -1,0 +1,41 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           SftCredencial
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              SftCredencial
+    plural:                SftCredencials
+    route_prefix:          sft_credencial
+    with_propel_route:     1
+    actions_base_class:    sfActions
+    css:                   none
+
+    config:
+      actions: ~
+      fields:
+        SftAplicaciones: { label: Aplicación}
+        id_aplicacion: { label: Aplicación}
+        nombre: { label: Nombre}
+        descripcion: { label : Descripción}
+      list:
+        title: Listado de Credenciales
+        max_per_page: 10
+        display: [ nombre, descripcion ]
+      filter:
+        class: credencialFormFilter
+        display: [ id_aplicacion, nombre, descripcion ]
+      form:
+        class: credencialForm
+        display: [ id_aplicacion, nombre, descripcion ]
+      edit:
+        title: Edición de la Credencial
+        fields: 
+          nombre: {label: Nombre*, help: 'Nombre que identificará la credencial, deberá ser único'}
+          descripcion: { label : Descripción*, help: 'Descripción de los tipos de accesos que permite esta credencial'}
+      new:
+        title: Nueva Credencial
+        fields: 
+          nombre: {label: Nombre*, help: 'Nombre que identificará la credencial, deberá ser único'}
+          descripcion: { label : Descripción*, help: 'Descripción de los tipos de accesos que permite esta credencial'}

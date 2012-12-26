@@ -1,0 +1,20 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/11-App
+
+# default values
+all:
+  clave: ##CLAVE##
+  codigo: ##CODIGO##
+  max_num_login_fails: 3
+  titulo: ##TITULO##
+  tema: ite
+
+  .array:
+    assets:
+      javascripts: [ jquery/js/jquery-1.6.2.min.js ]
+      stylesheets: [ native/css/default.css, native/css/admin.css ]
+      
+  mantenimiento:
+    activo: 0
+    url_modulo: sftGestorErrores
+    url_accion: mantenimiento

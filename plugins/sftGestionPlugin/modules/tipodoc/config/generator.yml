@@ -1,0 +1,33 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           SftTipoDocidentificacion
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              SftTipoDocidentificacion
+    plural:                SftTipoDocidentificacions
+    route_prefix:          sft_tipo_docidentificacion
+    with_propel_route:     1
+    actions_base_class:    sfActions
+    css:                   none
+
+    config:
+      actions: ~
+      fields:
+        funciondecontrol: { label: Función de control }
+      list:
+        title: Listado de tipos de documentos de identificación
+        display: [ nombre, funciondecontrol ]
+        max_per_page: 10
+      filter:  ~
+      form:    ~
+      edit:
+        title: 'Edición del tipo de documento de identificación: %%NOMBRE%%'
+        fields:
+          funciondecontrol: { label: Función de control, help: 'Define la función de control del documento de identificación (DNI, pasaporte, ficha...)'}
+      new:
+        title: Nuevo tipo de documento de indentificación
+        fields:
+          funciondecontrol: { label: Función de control, help: 'Define la función de control del documento de identificación (DNI, pasaporte, ficha...)'}
+

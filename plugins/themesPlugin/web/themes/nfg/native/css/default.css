@@ -1,0 +1,147 @@
+/*------estilos definitivos-------*/
+
+
+/*------estilos provisionales-----*/
+#menu
+{
+  background-color: #8d9817;
+  color: #f0ebe7;
+  height: 50px;
+  margin-top: 120px;
+}
+
+#menu ul li { display:inline; list-style-type: none;}
+#menu a, #menu a:visited {color:#f0ebe7; padding: 5px; text-decoration:none;}
+
+a, a:visited {text-decoration:none; color: #028a9a}
+
+h1
+{
+  background-color: #36C;
+  color: #fcffff;
+}
+
+h2
+{
+  color:  #36C;
+}
+
+.odd
+{
+  background-color: #ece8e9;
+}
+
+#sf_admin_container .help
+{
+    padding-left: 9em;
+    color: #aaa;
+}
+
+
+#form_nuevo input#autocomplete_nfg_convocatoria_id_actividad{width: 440px;}
+#form_nuevo input#autocomplete_nfg_convocatoria_id_lugar_ini{width: 440px;}
+#form_nuevo textarea#nfg_convocatoria_notas {width: 440px;}
+
+#form_editar input#autocomplete_nfg_convocatoria_id_actividad{width: 230px;}
+#form_editar input#autocomplete_nfg_convocatoria_id_lugar_ini{width: 230px;}
+#form_editar textarea#nfg_convocatoria_notas {width: 230px;}
+
+#listas div{float:left;}
+#lista_localidades, #lista_actividades {margin-left:20px;}
+#lista_localidades ul li, #lista_actividades ul li {list-style: none}
+
+#sf_admin_bar {float:left;}
+
+#wall{
+        width: 430px;
+        min-height: 200px;
+        border: solid thin #B4BBCD;
+        margin-top: 10px;
+     }
+     #wall ul{
+        list-style: none;
+        font-size: 12px;
+        line-height: 20px;
+     }
+     #wall ul #date{
+        font-style: italic;
+        font-size: 11px;
+        color: #ccc;
+        padding-left: 5px;
+     } 
+
+	
+#contenedor_general {
+
+	width:750px;
+	margin:auto;
+	background: #FFF;
+        }
+	
+#cabecera {
+  background: #FFF url('../images/header.gif') no-repeat !important;
+  /*background-size: contain;*/
+  /*background-position: center center;*/
+  width:750px;
+  height:200px;
+}
+
+#lateral {
+
+  display:block;
+	width:150px;
+	float:right;
+	padding:5px 0 5px 0;
+
+}
+
+#lateral p {
+
+	padding:3px 18px 3px 18px;
+	margin:0;
+
+}
+
+#general {
+	width:575px;
+  float:left;
+	padding-right: 20px;
+
+}
+
+#general p {
+
+	padding:3px 18px 3px 18px;
+	margin:0;
+
+}
+
+#pie, .PiePagina {
+
+	width:100%;
+	clear:left;
+	border-top:1px solid #ffffff;
+	border-bottom:1px solid #ffffff;
+	background:#ffffff url(grassfooter.jpg) bottom no-repeat;
+	padding: 55px 0 5px 0;
+  
+}
+
+#pie p {
+	text-align:center;
+	padding-right:8px;
+	font:8pt verdana, arial, sans-serif;
+        color:#000000;
+        
+}
+
+#leftImg
+{
+float:left;
+padding: 0 0px 0px 0;
+}
+.profile_ico
+{
+    background: url(../images/profile.png) no-repeat 0 0;
+	padding-left: 20px;
+}

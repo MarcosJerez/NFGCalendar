@@ -1,0 +1,116 @@
+page: Raiz
+route: Raiz
+credential: ~
+menu:
+  -
+    page: Inicio
+    route: '@homepage'
+    credential: SFTGESTIONPLUGIN_administracion
+    menu:
+      ~
+  -
+    page: UOS
+    route: '@sft_uo'
+    credential: SFTGESTIONPLUGIN_administracion
+    menu:
+      -
+        page: Gestión de uos
+        route: '@sft_uo'
+        credential: SFTGESTIONPLUGIN_administracion
+      -
+        page: Gestión de periodos
+        route: '@sft_periodo'
+        credential: SFTGESTIONPLUGIN_administracion
+      -
+        page: Gestión de perfiles
+        route: '@sft_perfil'
+        credential: SFTGESTIONPLUGIN_administracion
+      -
+        page: Gestión de ámbitos
+        route: '@sft_ambito_tipo'
+        credential: SFTGESTIONPLUGIN_administracion
+  -
+    page: Usuarios
+    route: '@sft_persona'
+    credential: SFTGESTIONPLUGIN_administracion
+    menu:
+      -
+        page: Gestión de personas
+        route: '@sft_persona'
+        credential: SFTGESTIONPLUGIN_administracion_uo
+      -
+        page: Gestión de organismos
+        route: '@sft_organismo'
+        credential: SFTGESTIONPLUGIN_administracion_uo  
+  -
+    page: Aplicaciones
+    route: '@sft_aplicacion'
+    credential: SFTGESTIONPLUGIN_administracion
+    menu:
+      -
+        page: Gestión de aplicaciones
+        route: '@sft_aplicacion'
+        credential: SFTGESTIONPLUGIN_administracion
+      -
+        page: Gestión de culturas
+        route: '@sft_cultura'
+        credential: SFTGESTIONPLUGIN_administracion
+  -
+    page: Localizaciones
+    route: '@gen_pais'
+    credential: SFTGESTIONPLUGIN_administracion
+    menu:
+      -
+        page: Gestión países
+        route: '@gen_pais'
+        credential: SFTGESTIONPLUGIN_administracion
+      -
+        page: Gestión de comunidades
+        route: '@gen_comunidad'
+        credential: SFTGESTIONPLUGIN_administracion
+      -
+        page: Gestión de provincias
+        route: '@gen_provincia'
+        credential: SFTGESTIONPLUGIN_administracion
+  -
+    page: Datos Auxiliares
+    route: '@sft_tipo_docidentificacion'
+    credential: SFTGESTIONPLUGIN_administracion
+    menu:
+      -
+        page: Gestión de tipos de documentos
+        route: '@sft_tipo_docidentificacion'
+        credential: SFTGESTIONPLUGIN_administracion
+      -
+        page: Gestión de tipos de direcciones
+        route: '@sft_tipo_direccion'
+        credential: SFTGESTIONPLUGIN_administracion
+      -
+        page: Gestión de tipos de organismos
+        route: '@sft_tipo_organismo'
+        credential: SFTGESTIONPLUGIN_administracion
+      -
+        page: Gestión de tipos de telefonos
+        route: '@sft_tipo_telefono'
+        credential: SFTGESTIONPLUGIN_administracion
+      -
+        page: Gestión de atributos
+        route: '@sft_usu_atributo'
+        credential: SFTGESTIONPLUGIN_administracion_uo
+  -
+    page: Identidad Federada
+    route: '@sftPAPIPlugin_poaParams'
+    credential: SFTGESTIONPLUGIN_administracion
+    menu:
+      -
+        page: Gestión del PoA PAPI
+        route: '@sftPAPIPlugin_poaParams'
+        credential: SFTGESTIONPLUGIN_administracion
+      -
+        page: Gestión de simpleSAMLphp
+        route: '@sftSAMLPlugin_runSAMLAdmin'
+        credential: SFTGESTIONPLUGIN_administracion
+      -
+        page: Mapeo de atributos
+        route: '@sft_fid_atributo'
+        credential: SFTGESTIONPLUGIN_administracion

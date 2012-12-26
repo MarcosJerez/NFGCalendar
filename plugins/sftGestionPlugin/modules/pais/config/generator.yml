@@ -1,0 +1,32 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           GenPais
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              GenPais
+    plural:                GenPaiss
+    route_prefix:          gen_pais
+    with_propel_route:     1
+    actions_base_class:    sfActions
+    css:                   none
+
+    config:
+      actions: ~
+      fields:
+        codigo_iso3166_alfa2: {label: Código alfa-2}
+        codigo_iso3166_alfa3: {label: Código alfa-3}
+        codigo_iso3166_num: {label: Código numérico}
+        paisoterritorio: {label: División}
+      list:
+        title: Listado de Países
+        max_per_page: 10
+        display: [ nombre, codigo_iso3166_alfa2, codigo_iso3166_alfa3, codigo_iso3166_num ]
+      filter:
+        display: [ codigo_iso3166_alfa2, codigo_iso3166_alfa3, codigo_iso3166_num ]
+      form:    ~
+      edit:
+        title: 'Edición del País: %%NOMBRE%%'
+      new:
+        title: Nuevo País

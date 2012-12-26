@@ -1,0 +1,9 @@
+all:
+  password_expire: 30
+  menu_general:    
+    perfiles:                true
+    configuracionPersonal:   true
+    aplicaciones:            true
+    ayuda:                   true
+    desconectar:             true
+  variables_sesion: [admin_module, sfGuardSecurityUser, SftUser]
