@@ -1,37 +1,0 @@
-10
-
-dir
-56
-svn+ssh://nosfaltagente@nosfaltagente.com/home/nosfaltagente/subversion/nosfaltagente/prueba/lib
-svn+ssh://nosfaltagente@nosfaltagente.com/home/nosfaltagente/subversion/nosfaltagente
-
-
-
-2012-05-22T19:16:15.728531Z
-56
-nosfaltagente
-has-props
-
-
-svn:externals
-
-
-
-
-
-
-
-
-
-
-894fac54-27ae-4777-9787-ab7b8e287816
-
-model
-dir
-
-form
-dir
-
-filter
-dir
-

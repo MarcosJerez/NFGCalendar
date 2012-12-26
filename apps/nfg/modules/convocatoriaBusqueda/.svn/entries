@@ -1,40 +1,0 @@
-10
-
-dir
-56
-svn+ssh://nosfaltagente@nosfaltagente.com/home/nosfaltagente/subversion/nosfaltagente/prueba/apps/nfg/modules/convocatoriaBusqueda
-svn+ssh://nosfaltagente@nosfaltagente.com/home/nosfaltagente/subversion/nosfaltagente
-
-
-
-2012-03-14T13:05:24.735519Z
-48
-nosfaltagente
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-894fac54-27ae-4777-9787-ab7b8e287816
-
-actions
-dir
-
-config
-dir
-
-lib
-dir
-
-templates
-dir
-

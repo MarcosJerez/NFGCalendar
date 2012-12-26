@@ -1,8 +1,0 @@
-prod:
-  .settings: { no_script_name: false, logging_enabled: false }
-dev:
-  .settings: { error_reporting: 32767, web_debug: true, cache: false, no_script_name: false, etag: false }
-test:
-  .settings: { error_reporting: 32759, cache: false, web_debug: false, no_script_name: false, etag: false }
-all:
-  .settings: { csrf_secret: 7ae95b21a4ef5b09c1ee0ac5fce3464a4bc7e160, escaping_strategy: true, escaping_method: ESC_SPECIALCHARS, use_database: true, enabled_modules: [default, sftGestorSesion, sftGestorErrores, sftSAMLSesion, sftPAPISesion, sftPAPIAS, edaGestorAyuda, periodo, uo, perfil, ambito, aplicacion, credencial, asociacredenciales, cultura, persona, email, telefono, direccion, asociaperfiles, atributo, asociaatributos, tipodoc, organismo, tipodir, tipodoc, tipoorg, tipotel, pais, comunidad, provincia, ambitotipo, asociaambitos, sfGuardUser, sfGuardGroup, sfGuardPermission, sfBreadNavAdmin, sftPAPIAdmin, sftSAMLAdmin], error_404_module: sftGestorErrores, error_404_action: error404, secure_module: sftGestorErrores, secure_action: secure, login_module: sftGestorSesion, login_action: index, check_lock: true }
