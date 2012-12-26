@@ -1,0 +1,51 @@
+propel:
+  _attributes:
+    package: lib.model
+    defaultIdMethod: native
+  bol_habilidad:
+    _attributes: { phpName: BolHabilidad }
+    id: { phpName: Id, type: INTEGER, size: '3', primaryKey: true, autoIncrement: true, required: true }
+    id_categoria: { phpName: IdCategoria, type: INTEGER, size: '3', required: false }
+    nombre: { phpName: Nombre, type: VARCHAR, size: '100', required: true }
+    descripcion: { phpName: Descripcion, type: VARCHAR, size: '255', required: false, defaultValue: '' }
+    _indexes: { id_categoria: [id_categoria], nombre: [nombre] }
+  bol_participante:
+    _attributes: { phpName: BolParticipante }
+    id: { phpName: Id, type: INTEGER, size: '8', primaryKey: true, autoIncrement: true, required: true }
+    id_trabajo: { phpName: IdTrabajo, type: INTEGER, size: '8', required: true }
+    id_usuario: { phpName: IdUsuario, type: INTEGER, size: '8', required: true }
+    _indexes: { id_trabajo: [id_trabajo], id_usuario: [id_usuario] }
+    _uniques: { id_participante: [id_trabajo, id_usuario] }
+  bol_trabajo:
+    _attributes: { phpName: BolTrabajo }
+    id: { phpName: Id, type: INTEGER, size: '8', primaryKey: true, autoIncrement: true, required: true }
+    id_usuario: { phpName: IdUsuario, type: INTEGER, size: '8', required: true, foreignTable: bol_usuario, foreignReference: id, onDelete: RESTRICT, onUpdate: RESTRICT  }
+    descripcion: { phpName: Descripcion, type: VARCHAR, size: '255', required: true }
+    fecha_ini: { phpName: FechaIni, type: DATE, required: true }
+    fecha_fin: { phpName: FechaFin, type: DATE, required: false }
+    notas: { phpName: Notas, type: VARCHAR, size: '255', required: false }
+    privado: { phpName: Privado, type: BOOLEAN, default: '0', required: false }
+    cubierto: { phpName: Cubierto, type: BOOLEAN, default: '0', required: false }
+    finalizado: { phpName: Finalizado, type: BOOLEAN, default: '0', required: false }
+    _indexes: { id_usuario: [id_usuario] }
+  bol_trabajo_usuario:
+    _attributes: { phpName: BolTrabajoUsuario }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    id_trabajo: { phpName: IdTrabajo, type: INTEGER, size: '11', required: true, foreignTable: bol_trabajo, foreignReference: id, onDelete: CASCADE, onUpdate: CASCADE }
+    id_usuario: { phpName: IdUsuario, type: INTEGER, size: '11', required: true, foreignTable: bol_usuario, foreignReference: id, onDelete: CASCADE, onUpdate: CASCADE }
+    _indexes: { id_trabajo: [id_trabajo, id_usuario], id_usuario: [id_usuario] }
+  bol_usuario:
+    _attributes: { phpName: BolUsuario }
+    id: { phpName: Id, type: INTEGER, size: '8', primaryKey: true, autoIncrement: true, required: true }
+    id_sfuser: { phpName: IdSfuser, type: INTEGER, size: '11', required: false }
+    nombre: { phpName: Nombre, type: VARCHAR, size: '255', required: true }
+    id_localidad: { phpName: IdLocalidad, type: INTEGER, size: '8', required: false }
+    disponibilidad: { phpName: Disponibilidad, type: INTEGER, size: '2', required: false }
+    _indexes: { id_localidad: [id_localidad], tiempo_disponible: [tiempo_disponible] }
+    _uniques: { nfg_usuario_U_1: [id_sfuser] }
+  bol_usuario_habilidad:
+    _attributes: { phpName: BolUsuarioHabilidad }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    id_usuario: { phpName: IdUsuario, type: INTEGER, size: '11', required: true, foreignTable: bol_usuario, foreignReference: id, onDelete: CASCADE, onUpdate: CASCADE }
+    id_habilidad: { phpName: IdHabilidad, type: INTEGER, size: '11', required: true, foreignTable: bol_habilidad, foreignReference: id, onDelete: CASCADE, onUpdate: CASCADE }
+    _indexes: { id_usuario: [id_usuario, id_habilidad], id_habilidad: [id_habilidad] }

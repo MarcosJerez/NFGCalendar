@@ -1,0 +1,24 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           NfgActividad
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              NfgActividad
+    plural:                NfgActividads
+    route_prefix:          nfg_actividad
+    with_propel_route:     1
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:    ~
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:
+        display: [nombre, descripcion]
+        actions:
+          _save: ~

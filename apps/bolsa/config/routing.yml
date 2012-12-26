@@ -1,0 +1,45 @@
+bol_usuario:
+  class: sfPropelRouteCollection
+  options:
+    model:                BolUsuario
+    module:               colaboradores
+    prefix_path:          /colaboradores
+    column:               id
+    with_wildcard_routes: true
+
+bol_habilidad:
+  class: sfPropelRouteCollection
+  options:
+    model:                BolHabilidad
+    module:               habilidades
+    prefix_path:          /habilidades
+    column:               id
+    with_wildcard_routes: true
+
+bol_trabajo:
+  class: sfPropelRouteCollection
+  options:
+    model:                BolTrabajo
+    module:               trabajos
+    prefix_path:          /trabajos
+    column:               id
+    with_wildcard_routes: true
+
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+login:
+  url: /signin
+  param: { module: sftGestorSesion, action: index }
+# default rules
+homepage:
+  url:   /
+  param: { module: inicio, action: homepage }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

@@ -1,0 +1,4 @@
+quito pertición de permisos "manage_groups"
+--Esta línea y las que están debajo serán ignoradas--
+
+M    modules/calendar/actions/actions.class.php

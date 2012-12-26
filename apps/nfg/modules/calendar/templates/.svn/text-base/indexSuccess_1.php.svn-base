@@ -1,0 +1,156 @@
+
+    <div id="fb-root"></div>
+    <?php if ($fb_userId) { 
+      $userInfo = $facebook->api('/' + $fb_userId); ?>
+    
+    <?php 
+      $criteria = new Criteria();
+      $criteria->add(NfgUsuarioPeer::ID_FBUSER,$fb_userId);
+      $nfg_user = NfgUsuarioPeer::doSelectOne($criteria);
+      if (!($nfg_user instanceof NfgUsuario))
+      {
+        $nfg_user = new NfgUsuario();
+        $nfg_user->setIdFbuser($fb_userId);
+        $nfg_user->setAlias($userInfo['name']);
+        $nfg_user->save();
+      }
+      $sf_user->setAuthenticated(true);
+      $sf_user->setAttribute('userId',$nfg_user->getId(),'NfgUser');
+      $sf_user->setAttribute('userId',$fb_userId,'FbUser');
+      $sf_user->setAttribute('userName',$userInfo['name'],'FbUser');
+    ?>
+      Welcome <?= $userInfo['name'] ?>
+    <?php } else { ?>
+    <fb:login-button></fb:login-button>
+    <?php } ?>
+
+
+        <div id="fb-root"></div>
+        <script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '38871837476', // App ID
+              channelUrl : '//http://nosfaltagente.com/channel.html', // Channel File
+              status     : true, // check login status
+              cookie     : true, // enable cookies to allow the server to access the session
+              xfbml      : true  // parse XFBML
+            });
+        FB.Event.subscribe('auth.login', function(response) {
+          window.location.reload();
+        });
+          };
+          // Load the SDK Asynchronously
+          (function(d){
+             var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+             if (d.getElementById(id)) {return;}
+             js = d.createElement('script'); js.id = id; js.async = true;
+             js.src = "//connect.facebook.net/en_US/all.js";
+             ref.parentNode.insertBefore(js, ref);
+           }(document));
+        </script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php use_stylesheet('../js/fullcalendar/fullcalendar/fullcalendar.css'); ?> 
+<?php use_javascript('fullcalendar/jquery/jquery-1.7.1.min.js'); ?>
+<?php use_javascript('fullcalendar/jquery/jquery-ui-1.8.17.custom.min.js'); ?>
+<?php use_javascript('fullcalendar/fullcalendar/fullcalendar.min.js'); ?>
+<?php use_themes_javascript('colorbox/js/jquery.colorbox.js') ?>
+<?php use_themes_stylesheet('colorbox/css/colorbox.css') ?>
+<?php include_stylesheets() ?>
+<?php include_javascripts() ?>
+
+<div id="calendar"></div>
+
+<div id="nueva">
+  <form method="POST" action="<?php echo url_for('calendar/new');?>">
+    <div id="info">Hola</div>
+    <div><?php echo $sf_data->getRaw('widgetActividades')->render('convocatoria[id_actividad]');?></div>
+    <input type="hidden" id="day" name="convocatoria[day]"></input>
+    <div><label>Hora:</label><input type="text" name ="convocatoria[hora]" size="2"></input><input type="text" name="convocatoria[min]" size="2"></input></div>
+    <input type="submit" value="Guardar"></input>
+  </form>
+</div>
+
+<div id="evento" style="">
+  <div id="apuntados"></div>
+  <form id="evento_form" method="POST" action="<?php echo url_for('calendar/apuntarse');?>">
+    <input type="hidden" id="id" name="convocatoria[id]"></input>
+    <div id="acciones"></div>  
+  </form>
+</div>
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    var base_url = '<?php echo url_for('calendar/apuntarse');?>';
+  
+    $(".darDeAlta").colorbox({iframe:true, width:900,height:400});
+  
+    $('#calendar').fullCalendar({
+        allDayDefault: false,
+        firstDay: 1,
+        timeFormat: 'H:mm',
+        monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+        dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+        dayNamesShort: ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'],
+        buttonText: {today: 'Hoy'},
+        dayClick: function(date, allDay, jsEvent, view) {
+          if (allDay) {
+            $('#day').val((date.getYear('%Y')+1900) + '-' + (date.getMonth()+1) + '-' + date.getDate());
+            $('#nueva').css('top', jsEvent.pageY).css('left',jsEvent.pageX).show();
+            $('#evento').hide();
+          }else{
+              alert('Clicked on the slot: ' + date);
+          }
+          //jsEvent.pageX
+        },
+        
+        eventClick: function(calEvent, jsEvent, view) {
+          $('#id').val(calEvent.id);
+          apuntados_html = '<ul>';
+          for(i=0;i<calEvent.apuntados.length;i++) 
+          {
+            apuntados_html += '<li>';
+            apuntados_html += '<a href=https://www.facebook.com/'+calEvent.apuntados[i]['fbId']+'>';
+            apuntados_html += calEvent.apuntados[i]['nombre'];
+            apuntados_html += '</a>';
+            apuntados_html += '</li>';
+          }
+          apuntados_html += '</ul>'; 
+          apuntados_html += '<div>'+calEvent.textoFaltan+'</div>';
+          $('#apuntados').html(apuntados_html);
+          $('#acciones').html('');
+          if(calEvent.acciones['apuntarse']) $('#acciones').append('<input type="submit" formaction="<?php echo url_for('calendar/apuntarse');?>" value="Me apunto"></input>');
+          if(calEvent.acciones['desapuntarse']) $('#acciones').append('<input type="submit" formaction="<?php echo url_for('calendar/desapuntarse');?>" value="Me desapunto"></input>');
+          if(calEvent.acciones['cancelar']) $('#acciones').append('<input type="submit" formaction="<?php echo url_for('calendar/cancelar');?>" value="Cancelar evento"></input>');
+          $('#evento_form').attr('action',base_url+'/id_convocatoria/'+calEvent.id);
+          $('#evento').css('top', jsEvent.pageY).css('left',jsEvent.pageX).show();
+          $('#nueva').hide();
+        },
+        eventMouseover: function(calEvent, jsEvent, view) {
+          
+        },
+        eventMouseout: function(calEvent, jsEvent, view) {
+          //$('#evento').hide();
+        },
+        
+        events: '<?php echo url_for($urlEventos);?>'
+    })
+});
+</script>

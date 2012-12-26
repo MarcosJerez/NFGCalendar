@@ -1,0 +1,105 @@
+<?php
+
+/**
+ * inicio actions.
+ *
+ * @package    edae3
+ * @subpackage inicio
+ * @author     Your name here
+ * @version    SVN: $Id: actions.class.php 12479 2008-10-31 10:54:40Z fabien $
+ */
+class inicioActions extends sfActions
+{
+   public function executeHomepage(sfWebRequest $request)
+    {
+		$this->redirect('convocatorias/index');
+    }
+
+   public function executeLoginfb()
+   {
+      $cookie = $this->get_facebook_cookie('38871837476', '3a3bf26d209538439c142ac216120124');
+      $user = json_decode(file_get_contents('https://graph.facebook.com/me?access_token='.$cookie['access_token']));
+      //echo $cookie['access_token'];
+      $fb_id = $user->id;
+      $nombre = $user->name;
+      $username = $user->username;
+      $fechanacimiento = $user->birthday;
+      $localidad = $user->location->name;
+      $sexo = $user->gender;
+
+      $con = Propel::getConnection('sft');
+
+      $persona = new EdaPersonas();
+      $persona->setNombre($nombre);
+      $persona->save($con); //Esto ya crea un eda_usuarios y un sf_guard_user
+
+//      $email = new EdaEmails();
+//      $email->setDireccion($this -> formRegistro -> getValue('email'));
+//      $email->setPredeterminado(1);
+//      $email->setIdPersona($persona -> getId());
+//      $email->save($con);
+
+//      $sfUser = $persona->getSfUser();
+//      $sfUser -> setUsername($username);
+//      $sfUser -> setPassword($this -> formRegistro -> getValue('password'));
+//      $sfUser -> setIsActive(1);
+//      $sfUser -> save($con);
+
+      $usuario = $persona->dameEdaUsuarios();
+      $usuario -> setAlias($username);
+      $usuario -> setIdCulturapref('es_ES');
+      $usuario -> setActivo(1);
+      $usuario -> save($con);
+
+      //Agregarle el perfil de la aplicación (eda_accesos) y crear el usuario de la aplicación (nfg_usuarios)
+      $acceso = new EdaAccesos();
+      $acceso->setIdUsuario($usuario->getId());
+      $acceso->setIdPerfil(2);
+      $acceso->save();
+
+      $confpersonal = new EdaConfpersonales();
+      $confpersonal->setIdUsuario($usuario->getId());
+      $confpersonal->setIdAplicacion(2);
+      $confpersonal->setIdPerfil(2);
+      $confpersonal->setIdPeriodo(1);
+      $confpersonal->save();
+
+      $usuario_app = new NfgUsuario();
+      $usuario_app->setIdSfuser($usuario->getId());
+      $usuario_app->save();
+
+      //SftUser: { idAmbito: null, idPerfil: 1, idPeriodo: 1, idUnidadOrganizativa: 1, idUsuario: 2, marca: gral, username: carherco }
+      //credentials: nfg_ACCESO
+      $this->getUser()->setAuthenticated(true);
+      $oConfPersonal = new edaConfPersonal($usuario->getId());
+      //$credencial_acceso =$this -> dameCredencialDeAcceso();
+      if($oConfPersonal -> esValida())
+      {
+          $this->getUser()->construyeSesion($oConfPersonal);
+      }
+      $this->getUser()->addCredential($credencial_acceso);
+
+      $this->redirect('convocatorias/index');
+
+      print_r($user); exit;
+
+   }
+
+
+   function get_facebook_cookie($app_id, $application_secret) {
+    $args = array();
+    parse_str(trim($_COOKIE['fbs_' . $app_id], '"'), $args);
+    ksort($args);
+    $payload = '';
+    foreach ($args as $key => $value) {
+      if ($key != 'sig') {
+        $payload .= $key . '=' . $value;
+      }
+    }
+    if (md5($payload . $application_secret) != $args['sig']) {
+      return null;
+    }
+    return $args;
+  }
+
+}

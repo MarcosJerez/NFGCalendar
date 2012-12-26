@@ -1,0 +1,39 @@
+/*#nueva{
+  position:absolute; 
+  display: none; 
+  z-index:20; 
+  width: 180px; 
+  height: 150px;
+  border-color: #666;
+  border-width: 1px;
+  border-style: solid;
+}*/
+
+/*
+#evento{
+  position:absolute; 
+  display: none; 
+  z-index:20;
+  width: 180px; 
+  height: 150px;
+  border-color: #666;
+  border-width: 1px;
+  border-style: solid;
+}
+*/
+
+.Tarifa_Mesa{
+  padding-left: 16px;
+  background-image: url('../images/icon_train.gif');
+  background-repeat: no-repeat;
+}
+
+.Compartir_coche{
+  padding-left: 16px;
+  background-image: url('../images/car.png');
+  background-repeat: no-repeat;
+}
+
+.typeahead.dropdown-menu {
+  z-index: 200000;
+}

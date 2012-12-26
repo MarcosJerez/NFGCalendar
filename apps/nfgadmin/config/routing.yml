@@ -1,0 +1,36 @@
+nfg_categoria:
+  class: sfPropelRouteCollection
+  options:
+    model:                NfgCategoria
+    module:               categorias
+    prefix_path:          /categorias
+    column:               id
+    with_wildcard_routes: true
+
+nfg_actividad:
+  class: sfPropelRouteCollection
+  options:
+    model:                NfgActividad
+    module:               actividades
+    prefix_path:          /actividades
+    column:               id
+    with_wildcard_routes: true
+
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+login:
+  url: /signin
+  param: { module: sftGestorSesion, action: index }
+# default rules
+homepage:
+  url:   /
+  param: { module: inicio, action: homepage }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

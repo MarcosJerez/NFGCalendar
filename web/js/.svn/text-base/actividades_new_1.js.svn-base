@@ -1,0 +1,7 @@
+$(document).ready(function(){
+  //elementoPadre = window.opener.document.getElementById('autocomplete_nfg_convocatoria_id_actividad');
+  //elementoPadre = $.colorbox.element()
+  $('#nfg_actividad_nombre').val(parent.$('#autocomplete_nfg_convocatoria_id_actividad').val());
+  //elementoPadre = window.opener.document.getElementById('autocomplete_nfg_convocatoria_id_lugar_ini');
+  $('#nfg_lugar_nombre').val($.colorbox.element().val());
+});

@@ -1,0 +1,22 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           BolUsuario
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              BolUsuario
+    plural:                BolUsuarios
+    route_prefix:          bol_usuario
+    with_propel_route:     1
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:    
+        display: [nombre, id_localidad, disponibilidad, habilidades]
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:     ~
