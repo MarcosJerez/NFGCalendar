@@ -34,6 +34,23 @@ nfg_convocatoria:
     column:               id
     with_wildcard_routes: true
 
+
+XActividad:
+  url: /actividad/:id
+  param: { module: calendar, action: XActividad }
+  
+XActividadJSON:
+  url: /actividadJSON/:id
+  param: { module: calendar, action: XActividadJSON }
+  
+XCategoria:
+  url: /categoria/:id
+  param: { module: calendar, action: XCategoria }
+  
+XCategoriaJSON:
+  url: /categoriaJSON/:id
+  param: { module: calendar, action: XCategoriaJSON }
+
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 login:

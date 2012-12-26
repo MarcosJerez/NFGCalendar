@@ -87,12 +87,29 @@ class calendarActions extends sfActions
 //                                                                             'name'=>"Anonimo") );
   }
   
-  public function executeTarifaMesa(sfWebRequest $request)
+  public function executeXActividad(sfWebRequest $request)
   {
     $this->isAuthenticated = $this->fb_init(); 
-    $this->urlEventos = 'calendar/convTarifaMesaJSON';
+    $id = $request->getParameter('id');
+    $this->urlEventos = '@XActividadJSON?id='.$id;
     
-    $id_categoria = 3;
+    $this->widgetActividades = new sfWidgetFormPropelChoice(array('model'=>'NfgActividad','method'=>'getAbrev'));
+    $this->widgetLocalidades = new sfWidgetFormPropelChoice(array('model' => 'NfgLocalidad', 'order_by'=>array('Nombre','asc'),'add_empty' => false));
+    
+    if($this->isAuthenticated) $this->setTemplate('index');
+    else $this->setTemplate('indexNoLogin');
+    $this->setLayout('layout2');
+  }
+  
+  
+  
+  public function executeXCategoria(sfWebRequest $request)
+  {
+    $this->isAuthenticated = $this->fb_init(); 
+    $id = $request->getParameter('id');
+    $this->urlEventos = '@XCategoriaJSON?id='.$id;
+    
+    //$id_categoria = 3;
     $criteria = new Criteria();
     //$criteria->add(NfgActividadPeer::ID_CATEGORIA,$id_categoria);
     $this->widgetActividades = new sfWidgetFormPropelChoice(array('model'=>'NfgActividad','method'=>'getAbrev','criteria'=>$criteria));
@@ -102,23 +119,7 @@ class calendarActions extends sfActions
     else $this->setTemplate('indexNoLogin');
     $this->setLayout('layout2');
   }
-  
-  public function executeCompartirCoche(sfWebRequest $request)
-  {
-    $this->isAuthenticated = $this->fb_init(); 
-    $this->urlEventos = 'calendar/convCompartirCocheJSON';
     
-    $id_categoria = 5;
-    $criteria = new Criteria();
-    //$criteria->add(NfgActividadPeer::ID_CATEGORIA,$id_categoria);
-    $this->widgetActividades = new sfWidgetFormPropelChoice(array('model'=>'NfgActividad','method'=>'getAbrev','criteria'=>$criteria));
-    $this->widgetLocalidades = new sfWidgetFormPropelChoice(array('model' => 'NfgLocalidad', 'order_by'=>array('Nombre','asc'),'add_empty' => false));
-    
-    if($this->isAuthenticated) $this->setTemplate('index');
-    else $this->setTemplate('indexNoLogin');
-    $this->setLayout('layout2');
-  }
-  
   public function executeConvTodasJSON(sfWebRequest $request)
   {
     $this->setLayout(false);
@@ -140,10 +141,11 @@ class calendarActions extends sfActions
     return sfView::NONE; 
   }
   
-  public function executeConvTarifaMesaJSON(sfWebRequest $request)
+  public function executeXActividadJSON(sfWebRequest $request)
   {
     $this->setLayout(false);
     sfConfig::set('sf_web_debug', false);
+    $id_actividad = $request->getParameter('id');
     
     $start = $request->getParameter('start',strtotime('first day of this month'));
     $end = $request->getParameter('end',strtotime('last day of this month'));
@@ -151,31 +153,7 @@ class calendarActions extends sfActions
     $start = date('Y-m-d',$start);
     $end = date('Y-m-d',$end);
 
-    $id_actividad = 7;
-    $criteria = new Criteria();
-    $criteria->add(NfgActividadPeer::ID,$id_actividad);
-    $criteria->addJoin(NfgActividadPeer::ID,NfgConvocatoriaPeer::ID_ACTIVIDAD);
-    $criteria->add(NfgConvocatoriaPeer::FECHA_INI,$start,CRITERIA::GREATER_EQUAL);
-    //$criteria->add(NfgConvocatoriaPeer::FECHA_INI,$end,CRITERIA::LESS_EQUAL);
-    $convocatorias = NfgConvocatoriaPeer::doSelect($criteria);
-  
-    if (headers_sent($filename, $linenum)) echo "Headers already sent in $filename on line $linenum\n";
-    echo $this->conv2json($convocatorias);
-    return sfView::NONE;
-  }
-  
-  public function executeConvCompartirCocheJSON(sfWebRequest $request)
-  {
-    $this->setLayout(false);
-    sfConfig::set('sf_web_debug', false);
-    
-    $start = $request->getParameter('start',strtotime('first day of this month'));
-    $end = $request->getParameter('end',strtotime('last day of this month'));
-    
-    $start = date('Y-m-d',$start);
-    $end = date('Y-m-d',$end);
-    
-    $id_actividad = 8;
+    //$id_actividad = 7;
     $criteria = new Criteria();
     $criteria->add(NfgActividadPeer::ID,$id_actividad);
     $criteria->addJoin(NfgActividadPeer::ID,NfgConvocatoriaPeer::ID_ACTIVIDAD);
@@ -191,6 +169,7 @@ class calendarActions extends sfActions
   private function conv2json($convocatorias)
   {
     $userId = $this->getUser()->getAttribute('userId',null,'NfgUser');
+    $eventos = array();
     foreach ($convocatorias as $convocatoria) {
       $estaapuntado = false; //Si está en la tabla nfg_participantes
       $evento = array(); 
