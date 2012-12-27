@@ -1,26 +1,6 @@
-/*#nueva{
-  position:absolute; 
-  display: none; 
-  z-index:20; 
-  width: 180px; 
-  height: 150px;
-  border-color: #666;
-  border-width: 1px;
-  border-style: solid;
-}*/
-
-/*
-#evento{
-  position:absolute; 
-  display: none; 
-  z-index:20;
-  width: 180px; 
-  height: 150px;
-  border-color: #666;
-  border-width: 1px;
-  border-style: solid;
+.breadcrumb{
+  background-color: white;
 }
-*/
 
 .Tarifa_Mesa{
   padding-left: 16px;
