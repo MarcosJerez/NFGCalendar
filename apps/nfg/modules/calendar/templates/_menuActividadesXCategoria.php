@@ -3,7 +3,7 @@
       <div class="btn-group">
         <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><?php echo $categoria->getNombre()?> <span class="caret"></span></button>
         <ul class="dropdown-menu">
-          <li><a href="<?php echo url_for('calendar/index');?>">Todos</a></li>
+          <li><a href="<?php echo url_for('@XCategoria?id='.$categoria->getId());?>">Todas</a></li>
           <li class="divider"></li>
           <?php foreach($categoria->getNFGActividads() as $actividad): ?>
             <li><a href="<?php echo url_for('@XActividad?id='.$actividad->getId());?>"><?php echo $actividad->getNombre()?></a></li>

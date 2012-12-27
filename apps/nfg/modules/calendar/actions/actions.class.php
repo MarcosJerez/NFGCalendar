@@ -155,7 +155,31 @@ class calendarActions extends sfActions
 
     //$id_actividad = 7;
     $criteria = new Criteria();
-    $criteria->add(NfgActividadPeer::ID,$id_actividad);
+    $criteria->add(NfgConvocatoriaPeer::ID_ACTIVIDAD,$id_actividad);
+    $criteria->add(NfgConvocatoriaPeer::FECHA_INI,$start,CRITERIA::GREATER_EQUAL);
+    //$criteria->add(NfgConvocatoriaPeer::FECHA_INI,$end,CRITERIA::LESS_EQUAL);
+    $convocatorias = NfgConvocatoriaPeer::doSelect($criteria);
+  
+    if (headers_sent($filename, $linenum)) echo "Headers already sent in $filename on line $linenum\n";
+    echo $this->conv2json($convocatorias);
+    return sfView::NONE;
+  }
+  
+  public function executeXCategoriaJSON(sfWebRequest $request)
+  {
+    $this->setLayout(false);
+    sfConfig::set('sf_web_debug', false);
+    $id_categoria = $request->getParameter('id');
+    
+    $start = $request->getParameter('start',strtotime('first day of this month'));
+    $end = $request->getParameter('end',strtotime('last day of this month'));
+    
+    $start = date('Y-m-d',$start);
+    $end = date('Y-m-d',$end);
+
+    //$id_actividad = 7;
+    $criteria = new Criteria();
+    $criteria->add(NfgActividadPeer::ID_CATEGORIA,$id_categoria);
     $criteria->addJoin(NfgActividadPeer::ID,NfgConvocatoriaPeer::ID_ACTIVIDAD);
     $criteria->add(NfgConvocatoriaPeer::FECHA_INI,$start,CRITERIA::GREATER_EQUAL);
     //$criteria->add(NfgConvocatoriaPeer::FECHA_INI,$end,CRITERIA::LESS_EQUAL);
