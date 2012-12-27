@@ -34,6 +34,9 @@ nfg_convocatoria:
     column:               id
     with_wildcard_routes: true
 
+calendar_index:
+  url: /calendar
+  param: { module: calendar, action: index }
 
 XActividad:
   url: /actividad/:id

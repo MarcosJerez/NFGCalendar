@@ -93,6 +93,7 @@ class calendarActions extends sfActions
     $id = $request->getParameter('id');
     $this->urlEventos = '@XActividadJSON?id='.$id;
     
+    $this->actividad = NfgActividadPeer::retrieveByPK($id);
     $this->widgetActividades = new sfWidgetFormPropelChoice(array('model'=>'NfgActividad','method'=>'getAbrev'));
     $this->widgetLocalidades = new sfWidgetFormPropelChoice(array('model' => 'NfgLocalidad', 'order_by'=>array('Nombre','asc'),'add_empty' => false));
     
@@ -110,6 +111,7 @@ class calendarActions extends sfActions
     $this->urlEventos = '@XCategoriaJSON?id='.$id;
     
     //$id_categoria = 3;
+    $this->categoria = NfgCategoriaPeer::retrieveByPK($id);
     $criteria = new Criteria();
     //$criteria->add(NfgActividadPeer::ID_CATEGORIA,$id_categoria);
     $this->widgetActividades = new sfWidgetFormPropelChoice(array('model'=>'NfgActividad','method'=>'getAbrev','criteria'=>$criteria));

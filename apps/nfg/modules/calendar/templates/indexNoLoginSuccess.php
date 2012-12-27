@@ -1,5 +1,9 @@
+<?php 
+  if(isset($actividad)) include_partial('breadcrumb', array('actividad'=>$actividad));
+  elseif(isset($categoria)) include_partial('breadcrumb', array('categoria'=>$categoria));
+?>
 
-    <div id="fb-root"></div>
+    <div id="fb-root" style="margin: 20px;"></div>
     <fb:login-button scope="read_stream,publish_stream"></fb:login-button>
 
         <script>
