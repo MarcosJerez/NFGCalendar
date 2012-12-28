@@ -234,6 +234,7 @@ class calendarActions extends sfActions
   public function executeNew(sfWebRequest $request)
   {
     $this->setLayout('layout2');
+    $convocatoria = new NfgConvocatoria();
     
     if ($request->isMethod('post'))
     {
@@ -250,7 +251,6 @@ class calendarActions extends sfActions
       
       //$id_usuario = 32;
       //Si los datos son válidos, guardar y redirigir
-      $convocatoria = new NfgConvocatoria();
       $convocatoria->setIdUsuario($id_usuario);
       $convocatoria->setIdActividad($params['id_actividad']);
       $convocatoria->setIdLugarIni($params['id_lugar_ini']);
@@ -264,7 +264,7 @@ class calendarActions extends sfActions
       $this->redirect('calendar/index');
     }
     
-    
+    $this->convocatoria = $convocatoria;
     
   }
   
@@ -367,7 +367,7 @@ class calendarActions extends sfActions
     $id_convocatoria = $request->getParameter('id');
     //$id_convocatoria = $convocatoria_params['id'];
     $id_usuario = $this->getUser()->getAttribute('userId',null,'NfgUser');
-    
+//$id_usuario = 32;    
     $convocatoria = NfgConvocatoriaPeer::retrieveByPK($id_convocatoria);
     $id_usuario_convocatoria = $convocatoria->getIdUsuario();
     
