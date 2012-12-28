@@ -223,11 +223,58 @@ class calendarActions extends sfActions
     return json_encode($eventos);
   }
   
+  /**
+   * Presenta el formulario de Nueva convocatoria
+   * 
+   * El formulario está en un componente así que newSuccess simplemente 
+   * llamará al componente
+   * 
+   * @param sfWebRequest $request
+   */
   public function executeNew(sfWebRequest $request)
   {
     $this->setLayout('layout2');
+    
+    if ($request->isMethod('post'))
+    {
+      //Validar los datos
+      $params = $request->getParameter('convocatoria');
+      $autocompletes = $request->getParameter('autocomplete');
+
+      $fb_user = $this->getUser()->getAttribute('userId',null,'FbUser');
+      $criteria = new Criteria();
+      $criteria->add(NfgUsuarioPeer::ID_FBUSER,$fb_user);
+      $nfg_user = NfgUsuarioPeer::doSelectOne($criteria);
+      $id_usuario = $nfg_user->getId();
+      
+      
+      //$id_usuario = 32;
+      //Si los datos son válidos, guardar y redirigir
+      $convocatoria = new NfgConvocatoria();
+      $convocatoria->setIdUsuario($id_usuario);
+      $convocatoria->setIdActividad($params['id_actividad']);
+      $convocatoria->setIdLugarIni($params['id_lugar_ini']);
+      if(!empty($params['id_lugar_fin'])) $convocatoria->setIdLugarFin($params['id_lugar_fin']);
+      $convocatoria->setFechaIni(DateTime::createFromFormat('m/d/Y', $params['dia'])->format('Y-m-d'));
+      $convocatoria->setHoraIni($params['hora'].':00');
+      $convocatoria->setParticipantesMin($params['participantes_min']);
+      if(!empty($params['participantes_max'])) $convocatoria->setParticipantesMax($params['participantes_max']);
+      $convocatoria->save();
+
+      $this->redirect('calendar/index');
+    }
+    
+    
+    
   }
   
+  /**
+   * Autocomplete de actividades para los formularios de nueva convocatoria y
+   * editar convocatoria
+   * 
+   * @param sfWebRequest $request
+   * @return json_array
+   */
   public function executeAutocompleteActividad(sfWebRequest $request)
   {
     $this->getResponse()->setContentType('aplication/json');
@@ -235,6 +282,13 @@ class calendarActions extends sfActions
     return $this->renderText(json_encode($actividades));
   }
   
+  /**
+   * Autocomplete de lugares para los formularios de nueva convocatoria y
+   * editar convocatoria
+   * 
+   * @param sfWebRequest $request
+   * @return json_array
+   */
   public function executeAutocompleteLugar(sfWebRequest $request)
   {
     $this->getResponse()->setContentType('aplication/json');
@@ -245,6 +299,7 @@ class calendarActions extends sfActions
   public function executeCreate(sfWebRequest $request)
   {
     $params = $request->getParameter('convocatoria');
+    $autocompletes = $request->getParameter('autocomplete');
     
     $fb_user = $this->getUser()->getAttribute('userId',null,'FbUser');
     $criteria = new Criteria();
@@ -256,7 +311,7 @@ class calendarActions extends sfActions
     $convocatoria->setIdUsuario($id_usuario);
     $convocatoria->setIdActividad($params['id_actividad']);
     $convocatoria->setIdLugarIni(7);
-    $convocatoria->setFechaIni($params['day']);
+    $convocatoria->setFechaIni($params['dia']);
     $convocatoria->setHoraIni($params['hora'].':00');
     $convocatoria->setParticipantesMin($params['participantes_min']);
     $convocatoria->setParticipantesMax($params['participantes_max']);

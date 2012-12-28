@@ -9,8 +9,7 @@
       <label class="control-label">¿Qué?</label>
       <div class="controls">
         <input type="hidden" id="id_actividad" name="convocatoria[id_actividad]"></input>
-        <input type="text" class="input-large" id="autocomplete_actividad" name="autocomplete_actividad" autocomplete="off" autofocus="autofocus" required="required"></input>
-        <?php //echo $sf_data->getRaw('widgetActividades')->render('convocatoria[id_actividad]');?>
+        <input type="text" class="input-large" id="autocomplete_actividad" name="autocomplete[actividad]" autocomplete="off" autofocus="autofocus" required="required"></input>
         <p class="help-inline"><a>¿No está lo que buscas?</a></p>
       </div>  
     </div>
@@ -20,13 +19,13 @@
       <div class="controls">
         <div class="input-prepend">
           <span class="add-on">Inicio</span>
-          <input type="hidden" id="lugar_ini" name="convocatoria[lugar_ini]"></input>
-          <input type="text" class="input-large" id="autocomplete_lugar_ini" name="autocomplete_lugar_ini" autocomplete="off" required="required"></input>
+          <input type="hidden" id="lugar_ini" name="convocatoria[id_lugar_ini]"></input>
+          <input type="text" class="input-large" id="autocomplete_lugar_ini" name="autocomplete[lugar_ini]" autocomplete="off" required="required"></input>
         </div>
         <div class="input-prepend">
           <span class="add-on">Fin</span>
-          <input type="hidden" id="lugar_fin" name="convocatoria[lugar_fin]"></input>
-          <input type="text" class="input-large" id="autocomplete_lugar_fin" name="autocomplete_lugar_fin" autocomplete="off"></input>
+          <input type="hidden" id="lugar_fin" name="convocatoria[id_lugar_fin]"></input>
+          <input type="text" class="input-large" id="autocomplete_lugar_fin" name="autocomplete[lugar_fin]" autocomplete="off"></input>
         </div>
       </div>
       
@@ -35,7 +34,7 @@
     <div class="control-group">
       <label class="control-label">¿Cuándo?</label>
       <div class="controls">
-        <input type="text" class="input-small" id="day" name="convocatoria[day]" placeholder="dd/mm/aaaa" required="required"></input>
+        <input type="text" class="input-small" id="day" name="convocatoria[dia]" placeholder="dd/mm/aaaa" required="required"></input>
         <input type="text" class="input-mini" id="hora" name ="convocatoria[hora]" size="5"  placeholder="hh:mm" required="required" data-provide="typeahead" data-items="4" data-source="" autocomplete="off"></input>
         <p class="help-inline">Día y hora del evento.</p>  
       </div>
