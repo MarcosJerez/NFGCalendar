@@ -131,7 +131,10 @@ $(document).ready(function() {
             }
         });
         
-    $("#day").datepicker({dateFormat:"dd/mm/yy"});
+    $("#day").datepicker({dateFormat:"dd/mm/yy",
+                          firstDay: 1,
+                          minDate: 0
+                        });
         
     $('#hora').typeahead({
           source: ["00:00","00:05","00:10","00:15","00:20","00:25","00:30","00:35","00:40","00:45","00:50","00:55",
