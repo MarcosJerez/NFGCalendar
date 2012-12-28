@@ -225,6 +225,25 @@ class calendarActions extends sfActions
   
   public function executeNew(sfWebRequest $request)
   {
+    $this->setLayout('layout2');
+  }
+  
+  public function executeAutocompleteActividad(sfWebRequest $request)
+  {
+    $this->getResponse()->setContentType('aplication/json');
+    $actividades = NfgActividadPeer::retrieveForAutoSelect($request->getParameter('term'));
+    return $this->renderText(json_encode($actividades));
+  }
+  
+  public function executeAutocompleteLugar(sfWebRequest $request)
+  {
+    $this->getResponse()->setContentType('aplication/json');
+    $lugares = NfgLugarPeer::retrieveForAutoSelect($request->getParameter('term'));
+    return $this->renderText(json_encode($lugares));
+  }
+  
+  public function executeCreate(sfWebRequest $request)
+  {
     $params = $request->getParameter('convocatoria');
     
     $fb_user = $this->getUser()->getAttribute('userId',null,'FbUser');

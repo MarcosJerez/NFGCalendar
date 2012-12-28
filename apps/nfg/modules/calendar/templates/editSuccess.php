@@ -49,12 +49,12 @@
     
     <ul>
       <li>
-        <a href="https://www.facebook.com/<?php $convocatoria->getNfgUsuario()->getIdFbuser()?>"><?php echo $convocatoria->getNfgUsuario()->getAlias()?> (organizador)</a>
+        <a target="_blank" href="https://www.facebook.com/<?php $convocatoria->getNfgUsuario()->getIdFbuser()?>"><?php echo $convocatoria->getNfgUsuario()->getAlias()?> (organizador)</a>
       </li>
       <?php $apuntados = $convocatoria->getNfgParticipantes();
       foreach($apuntados as $apuntado): ?>
       <li>
-        <a href="https://www.facebook.com/<?php $apuntado->getNfgUsuario()->getIdFbuser()?>"><?php echo $apuntado->getNfgUsuario()->getAlias() ?></a>
+        <a target="_blank" href="https://www.facebook.com/<?php $apuntado->getNfgUsuario()->getIdFbuser()?>"><?php echo $apuntado->getNfgUsuario()->getAlias() ?></a>
       </li>
       <?php endforeach; ?>
     </ul>

@@ -26,7 +26,7 @@ class NfgActividadPeer extends BaseNfgActividadPeer {
         $tActividad = array();
         foreach (NfgActividadPeer::doSelect($oCriteria) as $oActividad)
         {
-            $tActividad[$oActividad->getId()] = $oActividad->getNfgCategoria().' - '.$oActividad->getNombre();
+            $tActividad[$oActividad->getId()] = array('value'=>$oActividad->getId(),'label'=>$oActividad->getNfgCategoria().' - '.$oActividad->getNombre());
         }
 
         return $tActividad;

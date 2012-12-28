@@ -27,7 +27,7 @@ class NfgLugarPeer extends BaseNfgLugarPeer {
         $tLugar = array();
         foreach (NfgLugarPeer::doSelect($oCriteria) as $oLugar)
         {
-            $tLugar[$oLugar->getId()] = $oLugar->getNombre();
+            $tLugar[$oLugar->getId()] = array('value'=>$oLugar->getId(),'label'=>$oLugar->getNombre().', '.$oLugar->getNFGLocalidad()->getNombre());;
         }
 
         return $tLugar;
