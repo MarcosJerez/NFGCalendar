@@ -255,7 +255,7 @@ class calendarActions extends sfActions
       $convocatoria->setIdActividad($params['id_actividad']);
       $convocatoria->setIdLugarIni($params['id_lugar_ini']);
       if(!empty($params['id_lugar_fin'])) $convocatoria->setIdLugarFin($params['id_lugar_fin']);
-      $convocatoria->setFechaIni(DateTime::createFromFormat('m/d/Y', $params['dia'])->format('Y-m-d'));
+      $convocatoria->setFechaIni(DateTime::createFromFormat('d/m/Y', $params['dia'])->format('Y-m-d'));
       $convocatoria->setHoraIni($params['hora'].':00');
       $convocatoria->setParticipantesMin($params['participantes_min']);
       if(!empty($params['participantes_max'])) $convocatoria->setParticipantesMax($params['participantes_max']);
