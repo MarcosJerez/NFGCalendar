@@ -1,1 +1,1 @@
-<?php include_component('calendar', 'new') ?>
+<?php include_component('calendar', 'new', array('convocatoria'=>$convocatoria)) ?>
