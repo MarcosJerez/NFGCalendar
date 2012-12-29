@@ -49,7 +49,8 @@
 <?php include_component('calendar', 'new', $vars) ?>
 </div>
   
-<div id="evento" class="modal hide">
+<div id="eventodiv" class="modal hide">
+  <div id="evento">
   <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">✕</button>
         <h3>Info del evento</h3>
@@ -59,6 +60,7 @@
     <input type="hidden" id="id" name="convocatoria[id]"></input>
     <div id="acciones"></div>  
   </form>
+  </div>
 </div>
 
 
@@ -80,7 +82,7 @@ $(document).ready(function() {
             $('#day').val((date.getYear('%Y')+1900) + '-' + (date.getMonth()+1) + '-' + date.getDate());
             //$('#nueva').css('top', jsEvent.pageY).css('left',jsEvent.pageX).show();
             $('#nueva').modal('show');
-            $('#evento').hide();
+            $('#eventodiv').hide();
           }else{
               alert('Clicked on the slot: ' + date);
           }
@@ -97,7 +99,7 @@ $(document).ready(function() {
                     complete:function(XMLHttpRequest, textStatus){},
                     url: '<?php echo url_for('calendar/evento'); ?>'
                 });
-          $('#evento').modal('show');
+          $('#eventodiv').modal('show');
           $('#nueva').hide();
         },
         eventMouseover: function(calEvent, jsEvent, view) {
