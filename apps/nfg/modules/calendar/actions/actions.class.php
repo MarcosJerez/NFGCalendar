@@ -235,6 +235,7 @@ class calendarActions extends sfActions
   {
     $this->setLayout('layout2');
     $convocatoria = new NfgConvocatoria();
+    $this->convocatoria = $convocatoria;
     
     if ($request->isMethod('post'))
     {
