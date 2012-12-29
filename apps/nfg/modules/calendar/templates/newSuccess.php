@@ -1,2 +1,1 @@
-<?php if(!isset($convocatoria)) $convocatoria = new NfgConvocatoria(); ?>
-<?php include_component('calendar', 'new', array('convocatoria'=>$convocatoria)) ?>
+<?php include_component('calendar', 'new', array('lugar_ini'=>$convocatoria->getNfgLugarRelatedByIdLugarIni(),'lugar_fin'=>$convocatoria->getNfgLugarRelatedByIdLugarFin())) ?>
