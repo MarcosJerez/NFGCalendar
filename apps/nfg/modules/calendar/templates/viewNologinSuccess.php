@@ -64,7 +64,7 @@
     
     <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
     Para apuntarte debes logearte primero
-    <fb:login-button scope="manage_groups"></fb:login-button> 
+    <fb:login-button></fb:login-button> 
   </form>
   </div>
 </div>

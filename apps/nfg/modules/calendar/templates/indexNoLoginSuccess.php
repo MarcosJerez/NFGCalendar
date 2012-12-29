@@ -51,7 +51,7 @@
   </div>
   <div class="modal-body" style="text-align:center;">
   Para crear un evento debes logearte primero
-  <fb:login-button scope="manage_groups"></fb:login-button>
+  <fb:login-button></fb:login-button>
       </div>  
     </div>
     
@@ -63,7 +63,7 @@
   <div id="apuntados" class="modal-body"></div>
   <form id="evento_form" method="POST" action="<?php echo url_for('calendar/apuntarse');?>">
     Para apuntarte debes logearte primero
-    <fb:login-button scope="manage_groups"></fb:login-button> 
+    <fb:login-button></fb:login-button> 
   </form>
 </div>     
 
