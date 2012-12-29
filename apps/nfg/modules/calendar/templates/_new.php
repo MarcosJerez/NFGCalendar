@@ -15,7 +15,7 @@
     </div>
     
     <div class="control-group">
-      <?php include_partial('dondeForm',array('lugar_ini'=>$convocatoria->getNfgLugarRelatedByIdLugarIni(),'lugar_fin'=>$convocatoria->getNfgLugarRelatedByIdLugarFin())); ?>
+      <?php //include_partial('dondeForm',array('lugar_ini'=>$convocatoria->getNfgLugarRelatedByIdLugarIni(),'lugar_fin'=>$convocatoria->getNfgLugarRelatedByIdLugarFin())); ?>
     </div>
     
     <div class="control-group">
