@@ -5,7 +5,7 @@
         <ul class="dropdown-menu">
           <li><a href="<?php echo url_for('@XCategoria?id='.$categoria->getId());?>">Todas</a></li>
           <li class="divider"></li>
-          <?php foreach($categoria->getNFGActividads() as $actividad): ?>
+          <?php foreach($categoria->getNFGActividadsOrdenadas() as $actividad): ?>
             <li><a href="<?php echo url_for('@XActividad?id='.$actividad->getId());?>"><?php echo $actividad->getNombre()?></a></li>
           <?php endforeach ?>
         </ul>
