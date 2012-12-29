@@ -22,4 +22,14 @@ class NfgCategoria extends BaseNfgCategoria {
   {
     return $this->getNombre();
   }
+  
+  public function getNfgActividadsOrdenadas($criteria = null, PropelPDO $con = null)
+  {
+      $oCriteria = new Criteria();
+      $oCriteria->addAscendingOrderByColumn(NfgActividadPeer::ABREV);
+
+      $object = $this->getNfgActividads($oCriteria);
+      
+     return $object;
+  }
 } // NfgCategoria
