@@ -2,16 +2,14 @@
 <div class="controls">
   <div class="input-prepend">
     <span class="add-on">Inicio</span>
-    <input type="hidden" id="lugar_ini" name="convocatoria[id_lugar_ini]" value="<?php echo $lugar_ini->getId()?>"></input>
-    <input type="text" class="input-large" id="autocomplete_lugar_ini" name="autocomplete[lugar_ini]" value="<?php echo $lugar_ini->getNombre()?>" autocomplete="off" required="required"></input>
+    <input type="hidden" id="lugar_ini" name="convocatoria[id_lugar_ini]"></input>
+    <input type="text" class="input-large" id="autocomplete_lugar_ini" name="autocomplete[lugar_ini]" autocomplete="off" required="required"></input>
   </div>
-  <?php if(!is_null($lugar_fin)): ?>
   <div class="input-prepend">
     <span class="add-on">Fin</span>
-    <input type="hidden" id="lugar_fin" name="convocatoria[id_lugar_fin]" value="<?php echo $lugar_fin->getId()?>"></input>
-    <input type="text" class="input-large" id="autocomplete_lugar_fin" name="autocomplete[lugar_fin]" value="<?php echo $lugar_fin->getNombre()?>" autocomplete="off"></input>
+    <input type="hidden" id="lugar_fin" name="convocatoria[id_lugar_fin]"></input>
+    <input type="text" class="input-large" id="autocomplete_lugar_fin" name="autocomplete[lugar_fin]" autocomplete="off"></input>
   </div>
-  <?php endif ?>
 </div>
 
 
