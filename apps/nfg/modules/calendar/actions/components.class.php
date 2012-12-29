@@ -16,7 +16,7 @@ class calendarComponents extends sfComponents
    */
   public function executeNew()
   {
-    $this->convocatoria = new NfgConvocatoria();
+    
   }
   
 }
